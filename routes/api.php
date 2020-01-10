@@ -16,3 +16,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::get('/penebaran','PenebaranController@index');
+Route::post('/penebaran','PenebaranController@create');
+Route::put('/penebaran/{id}','PenebaranController@update');
+Route::delete('/penebaran/{id}','PenebaranController@delete');
