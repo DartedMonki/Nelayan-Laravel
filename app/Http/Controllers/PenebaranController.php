@@ -46,5 +46,13 @@ class PenebaranController extends Controller
 
     	return response()->json($penebarans);
     }
-       
+    public function showbyid($id)
+    {
+    	$penebarans = PenebaranModel::find($id);
+    	if(is_null($penebarans))
+    	{
+    		return response()->json("not found");
+    	}
+    	return response()->json($penebarans);
+    }
 }
