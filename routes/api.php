@@ -39,7 +39,7 @@ Route::delete('/pemindahan/{id}','PemindahanController@delete');
 
 Route::get('/panen','PanenController@index');
 Route::get('/panen/{id}','PanenController@showbyid');
-Route::post('/panen','PanenController@create')->name('panens.input');
+Route::post('/panen','PanenController@create')->name('panen.input');
 Route::put('/panen/{id}','PanenController@update');
 Route::delete('/panen/{id}','PanenController@delete');
 

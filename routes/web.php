@@ -16,7 +16,10 @@ Route::get('/', function () {
 })->name('welcome');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+
+Route::group(['middleware' => 'auth'], function () {
+Route::get('/home', 'HomeController@index')->name('home');
+});
 
 Route::group(['middleware' => 'auth'], function () {
 		Route::get('icons', ['as' => 'pages.icons', 'uses' => 'PageController@icons']);
@@ -26,6 +29,10 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('tables', ['as' => 'pages.tables', 'uses' => 'PageController@tables']);
 		Route::get('typography', ['as' => 'pages.typography', 'uses' => 'PageController@typography']);
 		Route::get('upgrade', ['as' => 'pages.upgrade', 'uses' => 'PageController@upgrade']);
+		Route::get('penebaran', ['as' => 'pages.penebaran', 'uses' => 'PageController@penebaran']);
+		Route::get('pencucian', ['as' => 'pages.pencucian', 'uses' => 'PageController@pencucian']);
+		Route::get('pemindahan', ['as' => 'pages.pemindahan', 'uses' => 'PageController@pemindahan']);
+		Route::get('panen', ['as' => 'pages.panen', 'uses' => 'PageController@panen']);
 });
 
 Route::group(['middleware' => 'auth'], function () {

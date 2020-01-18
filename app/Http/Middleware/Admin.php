@@ -15,10 +15,14 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if(auth()->user()->status == 'admin')
+        if(Auth::check())
         {
-            return $next($request);
+            if(auth()->user()->status == 'admin')
+            {
+                return $next($request);
+            }
+            return redirect('home')->with('error','Anda tidak mempunyai akses');
         }
-        return redirect('home')->with('error','Anda tidak mempunyai akses');
+        
     }
 }
