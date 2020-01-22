@@ -18,6 +18,7 @@ class CreateKelompokTable extends Migration
             $table->string('nama_kelompok');
             $table->string('ketua_kelompok');
             $table->string('bendahara_kelompok');
+            $table->string('humas_kelompok');
             $table->string('anggota_kelompok');
             $table->timestamps();
         });

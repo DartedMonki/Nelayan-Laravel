@@ -17,6 +17,7 @@ class KelompokController extends Controller
     	$kelompoks->nama_kelompok = $request->input('nama_kelompok');
     	$kelompoks->ketua_kelompok = $request->input('ketua_kelompok');
     	$kelompoks->bendahara_kelompok = $request->input('bendahara_kelompok'); 
+        $kelompoks->humas_kelompok = $request->input('humas_kelompok'); 
     	$kelompoks->anggota_kelompok = $request->input('anggota_kelompok');
     
     	$kelompoks->save();
@@ -28,12 +29,14 @@ class KelompokController extends Controller
     	$nama_kelompok = $request->nama_kelompok;
     	$ketua_kelompok = $request->ketua_kelompok;
     	$bendahara_kelompok = $request->bendahara_kelompok;
+        $humas_kelompok = $request->humas_kelompok;
     	$anggota_kelompok = $request->anggota_kelompok;
 
     	$kelompoks = KelompokModel::find($id);
     	$kelompoks->nama_kelompok = $nama_kelompok;
     	$kelompoks->ketua_kelompok = $ketua_kelompok;
     	$kelompoks->bendahara_kelompok = $bendahara_kelompok;
+        $kelompoks->humas_kelompok = $humas_kelompok;
     	$kelompoks->anggota_kelompok = $anggota_kelompok;
     	$kelompoks->save();
 

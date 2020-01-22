@@ -16,10 +16,11 @@ class CreateKerambaTable extends Migration
         Schema::create('kerambas', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('nama_keramba');
-            $table->integer('jumlah_kotak');
             $table->integer('panjang_keramba');
             $table->integer('lebar_keramba');
             $table->string('kapasitas_keramba');
+            $table->integer('id_kelompok')->unsigned();
+            $table->foreign('id_kelompok')->references('id')->on('kelompoks');
             $table->timestamps();
         });
     }
