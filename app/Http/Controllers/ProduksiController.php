@@ -24,7 +24,7 @@ class ProduksiController extends Controller
     public function penebaran(Request $request)
     {
     	$produksis = new ProduksiModel();
-    	$produksis->id_user = Auth::user('id');
+    	$produksis->id_user = $request->input('id_user');
     	$produksis->nama_ikan = $request->input('nama_ikan');
     	$produksis->panjang_ikan = $request->input('panjang_ikan');
     	$produksis->jumlah_ikan = $request->input('jumlah_ikan'); 

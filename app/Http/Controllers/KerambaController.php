@@ -19,6 +19,7 @@ class KerambaController extends Controller
     	$kerambas->lebar_keramba = $request->input('lebar_keramba');
     	$kerambas->kapasitas_keramba = $request->input('kapasitas_keramba');
         $kerambas->id_kelompok = $request->input('id_kelompok');
+        $kerambas->id_user = $request->input('id_user');
     
     	$kerambas->save();
     	return response()->json($kerambas);
@@ -31,6 +32,7 @@ class KerambaController extends Controller
     	$lebar_keramba = $request->lebar_keramba;
     	$kapasitas_keramba = $request->kapasitas_keramba;
         $id_kelompok = $request->id_kelompok;
+        $id_user = $request->id_user;
 
 
     	$kerambas = KerambaModel::find($id);
@@ -39,6 +41,7 @@ class KerambaController extends Controller
     	$kerambas->lebar_keramba = $lebar_keramba;
     	$kerambas->kapasitas_keramba = $kapasitas_keramba;
         $kerambas->id_kelompok = $id_kelompok;
+        $kerambas->id_user = $id_user;
     	$kerambas->save();
 
     	return response()->json($kerambas);
