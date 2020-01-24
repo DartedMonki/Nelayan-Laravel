@@ -25,8 +25,10 @@ class CreateProduksiTable extends Migration
             $table->string('status_panen')->default('Pembesaran');
             $table->integer('id_keramba')->unsigned();
             $table->foreign('id_keramba')->references('id')->on('kerambas');
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('users');
             $table->timestamps();
-            $table->integer('user_penginput');
+           
         });
     }
 

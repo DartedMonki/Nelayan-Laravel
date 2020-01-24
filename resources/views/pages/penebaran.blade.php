@@ -7,25 +7,29 @@
                 <div class="card-header">
                     <h4 class="card-title">Input Penebaran</h4>
                 </div>
-        <form method="post" action="{{ route('penebaran.input') }}">
+        <form method="post" action="{{ route('produksi.input') }}">
           @csrf
           <div class="form-group">    
-              <label for="jenis_ikan">Jenis Ikan :</label>
-              <input type="text" class="form-control" name="jenis_ikan"/>
+              <label for="jenis_ikan">Nama Ikan :</label>
+              <input type="text" class="form-control" name="nama_ikan"/>
           </div>
 
           <div class="form-group">
-              <label for="jumlah_ikan">Jumlah Ikan :</label>
-              <input type="number" class="form-control" name="jumlah_ikan"/>
-          </div>
-
-          <div class="form-group">
-              <label for="panjang_ikan">Panjang Ikan :</label>
+              <label for="jumlah_ikan">Panjang Ikan :</label>
               <input type="number" class="form-control" name="panjang_ikan"/>
           </div>
+
           <div class="form-group">
-              <label for="lokasi_penebaran">Lokasi Penebaran : </label>
-              <input type="text" class="form-control" name="lokasi_penebaran"/>
+              <label for="panjang_ikan">Jumlah Ikan :</label>
+              <input type="number" class="form-control" name="jumlah_ikan"/>
+          </div>
+          <div class="form-group">
+              <label for="lokasi_penebaran">Tanggal Penebaran : </label>
+              <input type="date" class="form-control" name="tanggal_penebaran"/>
+          </div>
+          <div class="form-group">
+              <label for="lokasi_penebaran">Keramba : </label>
+              <input type="number" class="form-control" name="id_penebaran"/>
           </div>
           <button type="submit" class="btn btn-primary-outline">Submit</button>
       	</form>

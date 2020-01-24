@@ -24,7 +24,7 @@ class ProduksiController extends Controller
     public function penebaran(Request $request)
     {
     	$produksis = new ProduksiModel();
-    	$produksis->user_penginput = Auth::User()->id;
+    	$produksis->id_user = Auth::user('id');
     	$produksis->nama_ikan = $request->input('nama_ikan');
     	$produksis->panjang_ikan = $request->input('panjang_ikan');
     	$produksis->jumlah_ikan = $request->input('jumlah_ikan'); 
@@ -89,15 +89,6 @@ class ProduksiController extends Controller
     	$produksis = produksiModel::find($id);
     	$produksis->delete();
 
-    	return response()->json($produksis);
-    }
-    public function showbyid($id)
-    {
-    	$produksis = produksiModel::find($id);
-    	if(is_null($produksis))
-    	{
-    		return response()->json("not found");
-    	}
     	return response()->json($produksis);
     }
 }
