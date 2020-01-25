@@ -22,17 +22,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 });
 
 Route::group(['middleware' => 'auth'], function () {
-		Route::get('icons', ['as' => 'pages.icons', 'uses' => 'PageController@icons']);
-		Route::get('maps', ['as' => 'pages.maps', 'uses' => 'PageController@maps']);
-		Route::get('notifications', ['as' => 'pages.notifications', 'uses' => 'PageController@notifications']);
-		Route::get('rtl', ['as' => 'pages.rtl', 'uses' => 'PageController@rtl']);
-		Route::get('tables', ['as' => 'pages.tables', 'uses' => 'PageController@tables']);
-		Route::get('typography', ['as' => 'pages.typography', 'uses' => 'PageController@typography']);
-		Route::get('upgrade', ['as' => 'pages.upgrade', 'uses' => 'PageController@upgrade']);
-		Route::get('penebaran', ['as' => 'pages.penebaran', 'uses' => 'PageController@penebaran']);
+		Route::resource('produksi', 'ProduksiController', ['except' => ['show']]);
+		Route::post('/produksi/create','ProduksiController@tebar')->name('produksi.tebar');
 		Route::get('pencucian', ['as' => 'pages.pencucian', 'uses' => 'PageController@pencucian']);
 		Route::get('pemindahan', ['as' => 'pages.pemindahan', 'uses' => 'PageController@pemindahan']);
 		Route::get('panen', ['as' => 'pages.panen', 'uses' => 'PageController@panen']);
+});
+
+Route::group(['middleware' => 'ketua'], function () {
+	Route::get('kelompok', ['as' => 'kelompok.edit', 'uses' => 'KelompokController@edit']);
+	Route::put('kelompok', ['as' => 'kelompok.update', 'uses' => 'KelompokController@update']);
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -43,4 +42,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::group(['middleware' => 'admin'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);
+	Route::resource('listkelompok', 'ListKelompokController', ['except' => ['show']]);
 });
+

@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class PakanModel extends Model
 {
-    protected $table = 'pakans';
+    protected $table = 'pakan';
     protected $fillable = array('sinyal_pakan','baterai_pakan','jenis_pakan','durasi_pakan','pemberian_terakhir','id_keramba');
 }

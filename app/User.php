@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'status','api_token',
+        'name', 'email', 'password', 'status',
     ];
 
     /**
@@ -36,4 +36,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function kelompoks()
+    {
+        return $this->belongsToMany(KelompokModel::class);
+    }
 }
+
