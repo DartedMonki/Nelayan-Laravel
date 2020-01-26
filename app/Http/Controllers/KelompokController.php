@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\KelompokModel as Kelompok;
-use App\User as User;
 
-class ListKelompokController extends Controller
+class KelompokController extends Controller
 {
-    public function index(Kelompok $model)
+    public function edit(Kelompok $model)
 	{
-		return view('listkelompok.index', ['kelompok' => $model->paginate(15)]);
+		return view('kelompok.edit', ['kelompok' => $model]);
 	}
 
 	public function create()
@@ -26,23 +25,19 @@ class ListKelompokController extends Controller
     	$kelompok->bendahara_kelompok = $request->input('bendahara_kelompok'); 
         $kelompok->humas_kelompok = $request->input('humas_kelompok'); 
     
-		$kelompok->save();
-		
-		$user = User::find([1]);
-		$kelompok->users()->attach($user);
-		
-    	return redirect()->route('listkelompok.index')->withStatus(__('Kelompok berhasil dibuat.'));
+    	$kelompok->save();
+    	return redirect()->route('kelompok.index')->withStatus(__('Kelompok berhasil dibuat.'));
     }
- 	public function edit($id)
-    {
-    	$kelompok = Kelompok::find($id);
-		return view('listkelompok.edit', compact('kelompok'));
-	}
+ 	// public function edit($id)
+    // {
+    // 	$kelompok = Kelompok::find($id);
+	// 	return view('kelompok.edit', compact('kelompok'));
+	// }
 
 	public function update(Request $request, $id)
     {
 		Kelompok::whereId($id)->update($request->except(['_token','_method']));
-        return redirect()->route('listkelompok.index')->withStatus(__('Kelompok berhasil diperbaharui.'));
+        return redirect()->route('kelompok.index')->withStatus(__('Kelompok berhasil diperbaharui.'));
 	}
 	
     public function destroy($id)
@@ -50,7 +45,7 @@ class ListKelompokController extends Controller
 		$kelompok = Kelompok::find($id);
     	$kelompok->delete();
 
-    	return redirect()->route('listkelompok.index')->withStatus(__('Kelompok berhasil dihapus.'));
+    	return redirect()->route('kelompok.index')->withStatus(__('Kelompok berhasil dihapus.'));
     }
     public function showbyid($id)
     {

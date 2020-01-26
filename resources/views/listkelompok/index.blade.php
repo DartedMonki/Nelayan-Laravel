@@ -1,7 +1,7 @@
-@extends('layouts.app', ['title' => __('Produksi')])
+@extends('layouts.app', ['title' => __('Manajemen Kelompok')])
 
 @section('content')
-    @include('listkelompok.partials.header', ['title' => __('List Produksi')])   
+    @include('listkelompok.partials.header', ['title' => __('List Kelompok')])   
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -10,10 +10,10 @@
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">{{ __('Produksi') }}</h3>
+                                <h3 class="mb-0">{{ __('Kelompok') }}</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('produksi.create') }}" class="btn btn-sm btn-primary">{{ __('Penebaran') }}</a>
+                                <a href="{{ route('listkelompok.create') }}" class="btn btn-sm btn-primary">{{ __('Tambah') }}</a>
                             </div>
                         </div>
                     </div>
@@ -33,46 +33,40 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">{{ __('Nama Ikan') }}</th>
-                                    <th scope="col">{{ __('Jumlah Ikan') }}</th>
-                                    <th scope="col">{{ __('Panjang Ikan') }}</th>
-                                    <th scope="col">{{ __('Tanggal Tebar') }}</th>
-                                    <th scope="col">{{ __('Tanggal Cuci') }}</th>
-                                    <th scope="col">{{ __('Tanggal Pindah') }}</th>
-                                    <th scope="col">{{ __('Tanggal Panen') }}</th>
-                                    <th scope="col">{{ __('Status Panen') }}</th>  
-                                    <th scope="col">{{ __('Keramba') }}</th>
-                                    <th scope="col">{{ __('Milik') }}</th>
+                                    <th scope="col">{{ __('Nama') }}</th>
+                                    <th scope="col">{{ __('Ketua') }}</th>
+                                    <th scope="col">{{ __('Bendahara') }}</th>
+                                    <th scope="col">{{ __('Humas') }}</th>
+                                    <th scope="col">{{ __('Tanggal Dibuat') }}</th>
                                     <th scope="col">{{ __('Menu') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($produksi as $prod)
+                                @foreach ($kelompok as $kel)
                                     <tr>
-                                        <td>{{ $prod->nama_ikan }}</td>
-                                        <td>{{ $prod->jumlah_ikan }}</td>
-                                        <td>{{ $prod->panjang_ikan }}</td>
-                                        <td>{{ $prod->tanggal_tebar->format('d/m/Y') }}</td>
-                                        
-                                        <td>@if ($prod->tanggal_cuci != NULL) {{ $prod->tanggal_cuci->format('d/m/Y') }} @else {{ __('Belum Pernah') }} @endif  </td>
-                                        <td>@if ($prod->tanggal_pindah != NULL) {{ $prod->tanggal_pindah->format('d/m/Y') }} @else {{ __('Belum Pernah') }} @endif  </td>
-                                        <td>@if ($prod->tanggal_panen != NULL) {{ $prod->tanggal_panen->format('d/m/Y') }} @else {{ __('Belum Pernah') }} @endif  </td>
-                                        
-                                        <td>{{ $prod->status_panen }}</td>
-                                        <td>{{ $prod->id_keramba }}</td>
-                                        <td>{{ $prod->id_user }}</td>
+                                        <td>{{ $kel->nama_kelompok }}</td>
+                                        <td>
+                                            {{ $kel->ketua_kelompok }}
+                                        </td>
+                                        <td>
+                                            {{ $kel->bendahara_kelompok }}
+                                        </td>
+                                        <td>
+                                            {{ $kel->humas_kelompok }}
+                                        </td>
+                                        <td>{{ $kel->created_at->format('d/m/Y H:i') }}</td>
                                         <td class="text-right">
                                             <div class="dropdown">
                                                 <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <i class="fas fa-ellipsis-v"></i>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                        <form action="{{ route('produksi.destroy', $prod->id) }}" method="post">
+                                                        <form action="{{ route('listkelompok.destroy', $kel->id) }}" method="post">
                                                             @csrf
                                                             @method('delete')
                                                             
-                                                            <a class="dropdown-item" href="{{ route('produksi.edit', $prod->id) }}">{{ __('Edit') }}</a>
-                                                            <button type="button" class="dropdown-item" onclick="confirm('{{ __("Yakin menghapus produksi ini?") }}') ? this.parentElement.submit() : ''">
+                                                            <a class="dropdown-item" href="{{ route('listkelompok.edit', $kel->id) }}">{{ __('Edit') }}</a>
+                                                            <button type="button" class="dropdown-item" onclick="confirm('{{ __("Yakin menghapus kelompok ini?") }}') ? this.parentElement.submit() : ''">
                                                                 {{ __('Delete') }}
                                                             </button>
                                                         </form>    
@@ -86,7 +80,7 @@
                     </div>
                     <div class="card-footer py-4">
                         <nav class="d-flex justify-content-end" aria-label="...">
-                            {{ $produksi->links() }}
+                            {{ $kelompok->links() }}
                         </nav>
                     </div>
                 </div>

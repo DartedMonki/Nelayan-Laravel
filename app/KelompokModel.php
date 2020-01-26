@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class KelompokModel extends Model
 {
@@ -10,6 +11,6 @@ class KelompokModel extends Model
     protected $fillable = array('nama_kelompok','ketua_kelompok','bendahara_kelompok','humas_kelompok');
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withTimestamps();
     }
 }
