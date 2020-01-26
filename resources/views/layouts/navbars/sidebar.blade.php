@@ -6,7 +6,7 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="{{ route('home') }}">
-            <img src="{{ asset('argon') }}/img/brand/blue.png" class="navbar-brand-img" alt="...">
+            <img src="{{ asset('argon') }}/img/brand/logo-nelayan.png" class="navbar-brand-img" alt="...">
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
@@ -42,7 +42,7 @@
                     <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                         <i class="ni ni-user-run"></i>
-                        <span>{{ __('Logout') }}</span>
+                        <span>{{ __('Keluar') }}</span>
                     </a>
                 </div>
             </li>
@@ -54,7 +54,7 @@
                 <div class="row">
                     <div class="col-6 collapse-brand">
                         <a href="{{ route('home') }}">
-                            <img src="{{ asset('argon') }}/img/brand/blue.png">
+                            <img src="{{ asset('argon') }}/img/brand/logo-nelayan.png">
                         </a>
                     </div>
                     <div class="col-6 collapse-close">
@@ -83,58 +83,70 @@
                         <i class="ni ni-tv-2 text-primary"></i> {{ __('Beranda') }}
                     </a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
-                        <i class="fab fa-laravel" style="color: #f4645f;"></i>
-                        <span class="nav-link-text" style="color: #f4645f;">{{ __('Produksi') }}</span>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('keramba.index') }}">
+                        <i class="fa fa-anchor text-blue"></i>{{ __('Keramba') }}
                     </a>
-
-                    <div class="collapse show" id="navbar-examples">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('profile.edit') }}">
-                                    {{ __('Penebaran') }}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user.index') }}">
-                                    {{ __('Pencucian') }}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li> -->
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('produksi.index') }}">
-                        <i class="ni ni-planet text-blue"></i>{{ __('Produksi') }}
+                        <i class="ni ni-box-2 text-blue"></i>{{ __('Produksi') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('profile.edit') }}">
-                        <i class="ni ni-planet text-blue"></i>{{ __('Profil Saya') }}
+                        <i class="ni ni-circle-08 text-blue"></i>{{ __('Profil Saya') }}
                     </a>
                 </li>
-                @if (auth()->user()->status == 'ketua')
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('kelompok.edit') }}">
-                        <i class="ni ni-planet text-blue"></i>{{ __('Kelompok') }}
+                        <i class="fa fa-users text-blue"></i>{{ __('Kelompok') }}
                     </a>
-                </li>     
-                @endif  
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link inactive" href="#navbar-iot" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-iot">
+                        <i class="fa fa-cubes" style="color: #6772e5;"></i>
+                        <span class="nav-link-text" >{{ __('Perangkat IoT') }}</span>
+                    </a>
+
+                    <div class="collapse hide" id="navbar-iot">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-rss text-blue"></i>{{ __('Sensor') }}
+                                </a>
+                            </li> 
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-braille text-blue"></i>{{ __('Pakan Otomatis') }}
+                                </a>
+                            </li>    
+                        </ul>
+                    </div>
+                </li>  
                 @if (auth()->user()->status == 'admin')
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('user.index') }}">
-                        <i class="ni ni-planet text-blue"></i>{{ __('Manajemen User') }}
+                    <a class="nav-link inactive" href="#navbar-admin" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-admin">
+                        <i class="ni ni-badge" style="color: #6772e5;"></i>
+                        <span class="nav-link-text" >{{ __('Admin') }}</span>
                     </a>
-                </li>     
-                @endif     
-                @if (auth()->user()->status == 'admin')
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('listkelompok.index') }}">
-                        <i class="ni ni-planet text-blue"></i>{{ __('Manajemen Kelompok') }}
-                    </a>
-                </li>     
-                @endif        
+
+                    <div class="collapse hide" id="navbar-admin">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('user.index') }}">
+                                    <i class="ni ni-ruler-pencil text-blue"></i>{{ __('Manajemen User') }}
+                                </a>
+                            </li> 
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('listkelompok.index') }}">
+                                    <i class="ni ni-ruler-pencil text-blue"></i>{{ __('Manajemen Kelompok') }}
+                                </a>
+                            </li>    
+                        </ul>
+                    </div>
+                </li>  
+                @endif      
                 <!-- <li class="nav-item">
                     <a class="nav-link" href="#">
                         <i class="ni ni-planet text-blue"></i> {{ __('Icons') }}

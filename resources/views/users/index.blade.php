@@ -69,13 +69,13 @@
                                                             @csrf
                                                             @method('delete')
                                                             
-                                                            <a class="dropdown-item" href="{{ route('user.edit', $user) }}">{{ __('Edit') }}</a>
+                                                            <a class="dropdown-item" href="{{ route('user.edit', $user) }}">{{ __('Ubah') }}</a>
                                                             <button type="button" class="dropdown-item" onclick="confirm('{{ __("Yakin menghapus user ini?") }}') ? this.parentElement.submit() : ''">
                                                                 {{ __('Hapus') }}
                                                             </button>
                                                         </form>    
                                                     @else
-                                                        <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Edit') }}</a>
+                                                        <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Ubah') }}</a>
                                                     @endif
                                                 </div>
                                             </div>

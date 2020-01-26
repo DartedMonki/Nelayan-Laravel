@@ -28,8 +28,8 @@ class ListKelompokController extends Controller
     
 		$kelompok->save();
 		
-		$user = User::find([1]);
-		$kelompok->users()->attach($user);
+		// $user = User::find([1]);
+		// $kelompok->users()->attach($user);
 		
     	return redirect()->route('listkelompok.index')->withStatus(__('Kelompok berhasil dibuat.'));
     }

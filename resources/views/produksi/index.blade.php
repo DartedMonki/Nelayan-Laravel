@@ -48,6 +48,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($produksi as $prod)
+                                    @if ($prod->id_user == auth()->user()->id || auth()->user()->status == 'admin')
                                     <tr>
                                         <td>{{ $prod->nama_ikan }}</td>
                                         <td>{{ $prod->jumlah_ikan }}</td>
@@ -61,7 +62,7 @@
                                         <td>{{ $prod->status_panen }}</td>
                                         <td>{{ $prod->id_keramba }}</td>
                                         <td>{{ $prod->id_user }}</td>
-                                        <td class="text-right">
+                                        <!-- <td class="text-right">
                                             <div class="dropdown">
                                                 <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <i class="fas fa-ellipsis-v"></i>
@@ -71,6 +72,9 @@
                                                             @csrf
                                                             @method('delete')
                                                             
+                                                            <a class="dropdown-item" href="{{ route('produksi.edit', $prod->id) }}">{{ __('Pencucian') }}</a>
+                                                            <a class="dropdown-item" href="{{ route('produksi.edit', $prod->id) }}">{{ __('Pemindahan') }}</a>
+                                                            <a class="dropdown-item" href="{{ route('produksi.edit', $prod->id) }}">{{ __('Panen') }}</a>
                                                             <a class="dropdown-item" href="{{ route('produksi.edit', $prod->id) }}">{{ __('Edit') }}</a>
                                                             <button type="button" class="dropdown-item" onclick="confirm('{{ __("Yakin menghapus produksi ini?") }}') ? this.parentElement.submit() : ''">
                                                                 {{ __('Delete') }}
@@ -78,8 +82,22 @@
                                                         </form>    
                                                 </div>
                                             </div>
+                                        </td> -->
+                                        <td class="text-right">
+                                            <form action="{{ route('produksi.destroy', $prod->id) }}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                                                
+                                                <a class="btn btn-sm btn-primary" href="{{ route('produksi.cuci', $prod->id) }}">{{ __('Pencucian') }}</a>
+                                                <a class="btn btn-sm btn-primary" href="{{ route('produksi.pindah', $prod->id) }}">{{ __('Pemindahan') }}</a>
+                                                <a class="btn btn-sm btn-primary" href="{{ route('produksi.panen', $prod->id) }}">{{ __('Panen') }}</a>
+                                                <button type="button" class="btn btn-sm btn-primary" onclick="confirm('{{ __("Yakin menghapus produksi ini?") }}') ? this.parentElement.submit() : ''">
+                                                    {{ __('Hapus') }}
+                                                </button>
+                                            </form>    
                                         </td>
                                     </tr>
+                                    @endif
                                 @endforeach
                             </tbody>
                         </table>

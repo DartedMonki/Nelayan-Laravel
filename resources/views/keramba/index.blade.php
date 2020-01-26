@@ -1,7 +1,7 @@
-@extends('layouts.app', ['title' => __('Manajemen Kelompok')])
+@extends('layouts.app', ['title' => __('Keramba')])
 
 @section('content')
-    @include('listkelompok.partials.header', ['title' => __('List Kelompok')])   
+    @include('listkelompok.partials.header', ['title' => __('List Keramba')])   
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -10,10 +10,10 @@
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">{{ __('Kelompok') }}</h3>
+                                <h3 class="mb-0">{{ __('Keramba') }}</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('listkelompok.create') }}" class="btn btn-sm btn-primary">{{ __('Tambah') }}</a>
+                                <a href="{{ route('keramba.create') }}" class="btn btn-sm btn-primary">{{ __('Tambah') }}</a>
                             </div>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                         @endif
                     </div>
 
-                    <div class="table-responsive">
+                    <!-- <div class="table-responsive">
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
@@ -42,30 +42,30 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($kelompok as $kel)
+                                @foreach ($keramba as $krb)
                                     <tr>
-                                        <td>{{ $kel->nama_kelompok }}</td>
+                                        <td>{{ $krb->nama_kelompok }}</td>
                                         <td>
-                                            {{ $kel->ketua_kelompok }}
+                                            {{ $krb->ketua_kelompok }}
                                         </td>
                                         <td>
-                                            {{ $kel->bendahara_kelompok }}
+                                            {{ $krb->bendahara_kelompok }}
                                         </td>
                                         <td>
-                                            {{ $kel->humas_kelompok }}
+                                            {{ $krb->humas_kelompok }}
                                         </td>
-                                        <td>{{ $kel->created_at->format('d/m/Y H:i') }}</td>
+                                        
                                         <td class="text-right">
                                             <div class="dropdown">
                                                 <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <i class="fas fa-ellipsis-v"></i>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                        <form action="{{ route('listkelompok.destroy', $kel->id) }}" method="post">
+                                                        <form action="{{ route('listkelompok.destroy', $krb->id) }}" method="post">
                                                             @csrf
                                                             @method('delete')
                                                             
-                                                            <a class="dropdown-item" href="{{ route('listkelompok.edit', $kel->id) }}">{{ __('Ubah') }}</a>
+                                                            <a class="dropdown-item" href="{{ route('listkelompok.edit', $krb->id) }}">{{ __('Ubah') }}</a>
                                                             <button type="button" class="dropdown-item" onclick="confirm('{{ __("Yakin menghapus kelompok ini?") }}') ? this.parentElement.submit() : ''">
                                                                 {{ __('Hapus') }}
                                                             </button>
@@ -80,9 +80,9 @@
                     </div>
                     <div class="card-footer py-4">
                         <nav class="d-flex justify-content-end" aria-label="...">
-                            {{ $kelompok->links() }}
+                            {{ $keramba->links() }}
                         </nav>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

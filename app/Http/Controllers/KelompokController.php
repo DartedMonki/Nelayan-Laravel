@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\KelompokModel as Kelompok;
+use App\User;
 
 class KelompokController extends Controller
 {

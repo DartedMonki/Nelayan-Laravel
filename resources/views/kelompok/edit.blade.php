@@ -3,7 +3,7 @@
 @section('content')
     @include('users.partials.header', [
         'title' => __('Selamat Datang') . ' '. auth()->user()->name,
-        'description' => __('Berikut merupakan halaman profil. Anda dapat mengubah profil Anda disini'),
+        'description' => __('Berikut merupakan halaman kelompok. Anda dapat mengatur kelompok Anda disini.'),
         'class' => 'col-lg-7'
     ])   
 
@@ -76,7 +76,7 @@
                 <div class="card bg-secondary shadow">
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
-                            <h3 class="col-12 mb-0">{{ __('Edit Profil') }}</h3>
+                            <h3 class="col-12 mb-0">{{ __('Edit Kelompok') }}</h3>
                         </div>
                     </div>
                     <div class="card-body">
@@ -84,7 +84,7 @@
                             @csrf
                             @method('put')
 
-                            <h6 class="heading-small text-muted mb-4">{{ __('Informasi User') }}</h6>
+                            <h6 class="heading-small text-muted mb-4">{{ __('Informasi Kelompok') }}</h6>
                             
                             @if (session('status'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">

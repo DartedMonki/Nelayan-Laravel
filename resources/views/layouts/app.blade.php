@@ -7,9 +7,11 @@
 
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Nelayan K1000') }}</title>
+        <!-- <title>{{ config('app.name', 'Nelayan K1000') }}</title> -->
+        <title>Nelayan Cerdas K1000</title>
         <!-- Favicon -->
-        <link href="{{ asset('argon') }}/img/brand/favicon.png" rel="icon" type="image/png">
+        <!-- Credits to http://icons8.com -->
+        <link href="{{ asset('argon') }}/img/brand/Animals-Fish-2-icon.png" rel="icon" type="image/png">
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
         <!-- Icons -->

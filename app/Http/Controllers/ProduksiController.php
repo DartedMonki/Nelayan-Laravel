@@ -41,61 +41,32 @@ class ProduksiController extends Controller
     	$produksi->save();
     	return redirect()->route('produksi.index')->withStatus(__('Penebaran berhasil dibuat.'));
     }
- 	public function pencucian(Request $request,$id)
+ 	public function pencucian($id)
     {
-    	
-    	$panjang_ikan = $request->panjang_ikan;
-    	$tanggal_cuci = $request->tanggal_cuci;
-    	$jumlah_ikan = $request->jumlah_ikan;
-
-
-    	$produksis = Produksi::find($id);
-    	$produksis->panjang_ikan = $panjang_ikan;
-    	$produksis->tanggal_cuci = $tanggal_cuci;
-    	$produksis->jumlah_ikan = $jumlah_ikan;
-    	$produksis->save();
-
-    	return response()->json($produksis);
+    	$produksi = Produksi::find($id);
+		return view('produksi.pencucian', compact('produksi'));
     }
-    public function pemindahan(Request $request,$id)
+    public function pemindahan($id)
     {
-    	
-    	$panjang_ikan = $request->panjang_ikan;
-    	$tanggal_pindah = $request->tanggal_pindah;
-    	$jumlah_ikan = $request->jumlah_ikan;
-
-
-    	$produksis = Produksi::find($id);
-    	$produksis->panjang_ikan = $panjang_ikan;
-    	$produksis->tanggal_pindah = $tanggal_pindah;
-    	$produksis->jumlah_ikan = $jumlah_ikan;
-    	$produksis->save();
-
-    	return response()->json($produksis);
+    	$produksi = Produksi::find($id);
+		return view('produksi.pemindahan', compact('produksi'));
     }
-    public function panen(Request $request,$id)
+    public function panen($id)
     {
-    	
-    	$panjang_ikan = $request->panjang_ikan;
-    	$tanggal_panen = $request->tanggal_panen;
-    	$jumlah_ikan = $request->jumlah_ikan;
-
-
-    	$produksis = Produksi::find($id);
-    	$produksis->panjang_ikan = $panjang_ikan;
-    	$produksis->tanggal_panen = $tanggal_panen;
-    	$produksis->jumlah_ikan = $jumlah_ikan;
-    	$produksis->status_panen = 'Sudah Dipanen';
-    	$produksis->save();
-
-    	return response()->json($produksis);
-    }
-    public function delete($id)
+    	$produksi = Produksi::find($id);
+		return view('produksi.panen', compact('produksi'));
+	}
+	public function update(Request $request, $id)
+    {
+		Produksi::whereId($id)->update($request->except(['_token','_method']));
+        return redirect()->route('produksi.index')->withStatus(__('Ikan berhasil diperbaharui.'));
+	}
+    public function destroy($id)
     {
 
     	$produksis = Produksi::find($id);
     	$produksis->delete();
 
-    	return response()->json($produksis);
+    	return redirect()->route('produksi.index')->withStatus(__('Ikan berhasil dihapus.'));
     }
 }

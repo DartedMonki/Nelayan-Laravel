@@ -21,25 +21,34 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/home', 'HomeController@index')->name('home');
 });
 
+// Route Untuk Produksi
 Route::group(['middleware' => 'auth'], function () {
 		Route::resource('produksi', 'ProduksiController', ['except' => ['show']]);
 		Route::post('/produksi/create','ProduksiController@tebar')->name('produksi.tebar');
-		Route::get('pencucian', ['as' => 'pages.pencucian', 'uses' => 'PageController@pencucian']);
-		Route::get('pemindahan', ['as' => 'pages.pemindahan', 'uses' => 'PageController@pemindahan']);
-		Route::get('panen', ['as' => 'pages.panen', 'uses' => 'PageController@panen']);
+		Route::get('/produksi/{id}/cuci','ProduksiController@pencucian')->name('produksi.cuci');
+		Route::get('/produksi/{id}/pindah','ProduksiController@pemindahan')->name('produksi.pindah');
+		Route::get('/produksi/{id}/panen','ProduksiController@panen')->name('produksi.panen');
 });
 
-Route::group(['middleware' => 'ketua'], function () {
-	Route::get('kelompok', ['as' => 'kelompok.edit', 'uses' => 'KelompokController@edit']);
-	Route::put('kelompok', ['as' => 'kelompok.update', 'uses' => 'KelompokController@update']);
-});
-
+// Route Untuk Edit Profile User
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 });
 
+// Route Untuk Keramba
+Route::group(['middleware' => 'auth'], function () {
+	Route::resource('keramba', 'KerambaController', ['except' => ['show']]);
+});
+
+// Route Untuk Kelompok
+Route::group(['middleware' => 'ketua'], function () {
+	Route::get('kelompok', ['as' => 'kelompok.edit', 'uses' => 'KelompokController@edit']);
+	Route::put('kelompok', ['as' => 'kelompok.update', 'uses' => 'KelompokController@update']);
+});
+
+// Route Untuk Admin
 Route::group(['middleware' => 'admin'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);
 	Route::resource('listkelompok', 'ListKelompokController', ['except' => ['show']]);
