@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\KerambaModel as Keramba;
+use App\User as User;
+use App\KelompokModel as Kelompok;
+
 class HomeController extends Controller
 {
     /**
@@ -19,8 +23,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Keramba $model)
     {
-        return view('dashboard');
+
+        return view('dashboard', ['keramba' => $model->paginate(6)]);
     }
 }

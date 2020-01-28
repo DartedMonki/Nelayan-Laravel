@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
+use App\KelompokModel as Kelompok;
 
 class UserController extends Controller
 {
@@ -55,8 +56,9 @@ class UserController extends Controller
         if ($user->id == 1) {
             return redirect()->route('user.index');
         }
+        $kelompok = Kelompok::pluck('nama_kelompok', 'id');
 
-        return view('users.edit', compact('user'));
+        return view('users.edit', compact('user'), compact('kelompok', $kelompok));
     }
 
     /**

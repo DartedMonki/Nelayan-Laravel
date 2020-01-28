@@ -18,7 +18,7 @@ class PakanController extends Controller
     	$pakans->jenis_pakan = $request->input('jenis_pakan');
     	$pakans->durasi_pakan = $request->input('durasi_pakan');
         $pakans->pemberian_terakhir = $request->input('pemberian_terakhir');
-        $pakans->id_keramba = $request->input('id_keramba');
+        $pakans->keramba_id = $request->input('keramba_id');
     
     	$pakans->save();
     	return response()->json($pakans);
@@ -31,7 +31,7 @@ class PakanController extends Controller
     	$jenis_pakan = $request->jenis_pakan;
     	$durasi_pakan = $request->durasi_pakan;
     	$pemberian_terakhir = $request->pemberian_terakhir;
-        $id_keramba = $request->id_keramba;
+        $keramba_id = $request->keramba_id;
 
 
     	$pakans = pakanModel::find($id);
@@ -40,7 +40,7 @@ class PakanController extends Controller
     	$pakans->jenis_pakan = $jenis_pakan;
     	$pakans->durasi_pakan = $durasi_pakan;
         $pakans->pemberian_terakhir = $pemberian_terakhir;
-        $pakans->id_keramba = $id_keramba;
+        $pakans->keramba_id = $keramba_id;
     	$pakans->save();
 
     	return response()->json($pakans);

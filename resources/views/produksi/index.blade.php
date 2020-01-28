@@ -48,7 +48,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($produksi as $prod)
-                                    @if ($prod->id_user == auth()->user()->id || auth()->user()->status == 'admin')
+                                    @if ($prod->user_id == auth()->user()->id || auth()->user()->status == 'admin')
                                     <tr>
                                         <td>{{ $prod->nama_ikan }}</td>
                                         <td>{{ $prod->jumlah_ikan }}</td>
@@ -60,8 +60,8 @@
                                         <td>@if ($prod->tanggal_panen != NULL) {{ $prod->tanggal_panen->format('d/m/Y') }} @else {{ __('Belum Pernah') }} @endif  </td>
                                         
                                         <td>{{ $prod->status_panen }}</td>
-                                        <td>{{ $prod->id_keramba }}</td>
-                                        <td>{{ $prod->id_user }}</td>
+                                        <td>{{ $prod->keramba->nama_keramba }}</td>
+                                        <td>{{ $prod->user->name }}</td>
                                         <!-- <td class="text-right">
                                             <div class="dropdown">
                                                 <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

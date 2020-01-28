@@ -21,7 +21,7 @@ class SensorController extends Controller
         $sensors->kelembaban_udara = $request->input('kelembaban_udara');
         $sensors->curah_hujan = $request->input('curah_hujan');
         $sensors->kecepatan_arus = $request->input('kecepatan_arus');
-        $sensors->id_keramba = $request->input('id_keramba');
+        $sensors->keramba_id = $request->input('keramba_id');
     
     	$sensors->save();
     	return response()->json($sensors);
@@ -36,7 +36,7 @@ class SensorController extends Controller
     	$kelembaban_udara = $request->kelembaban_udara;
     	$curah_hujan = $request->curah_hujan;
     	$kecepatan_arus = $request->kecepatan_arus;
-        $id_keramba = $request->id_keramba;
+        $keramba_id = $request->keramba_id;
 
 
     	$sensors = sensorModel::find($id);
@@ -47,7 +47,7 @@ class SensorController extends Controller
         $sensors->kelembaban_udara = $kelembaban_udara;
         $sensors->curah_hujan = $curah_hujan;
         $sensors->kecepatan_arus = $kecepatan_arus;
-        $sensors->id_keramba = $id_keramba;
+        $sensors->keramba_id = $keramba_id;
     	$sensors->save();
 
     	return response()->json($sensors);

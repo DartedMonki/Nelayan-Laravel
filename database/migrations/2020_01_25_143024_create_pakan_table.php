@@ -20,8 +20,8 @@ class CreatePakanTable extends Migration
             $table->string('jenis_pakan');
             $table->string('durasi_pakan');
             $table->string('pemberian_terakhir');
-            $table->integer('id_keramba')->unsigned();
-            $table->foreign('id_keramba')->references('id')->on('keramba');
+            $table->integer('keramba_id')->unsigned();
+            $table->foreign('keramba_id')->references('id')->on('keramba');
             $table->timestamps();
         });
     }

@@ -13,7 +13,7 @@
                                 <h3 class="mb-0">{{ __('User') }}</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">{{ __('Tambah User') }}</a>
+                                <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">{{ __('Tambah') }}</a>
                             </div>
                         </div>
                     </div>
@@ -36,6 +36,7 @@
                                     <th scope="col">{{ __('Nama') }}</th>
                                     <th scope="col">{{ __('Email') }}</th>
                                     <th scope="col">{{ __('Status') }}</th>
+                                    <th scope="col">{{ __('Kelompok') }}</th>
                                     <th scope="col">{{ __('Tanggal Dibuat') }}</th>
                                     <th scope="col">{{ __('Menu') }}</th>
                                 </tr>
@@ -55,6 +56,12 @@
                                         {{ __('Ketua Kelompok') }}
                                         @else 
                                         {{ __('Pembudidaya') }}
+                                        @endif
+                                        </td>
+                                        <td>
+                                        @if ($user->kelompok_id != NULL)
+                                            {{ $user->kelompok_id }}
+                                        @else {{ __('Belum Ada') }} 
                                         @endif
                                         </td>
                                         <td>{{ $user->created_at->format('d/m/Y H:i') }}</td>

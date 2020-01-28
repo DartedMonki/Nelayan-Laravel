@@ -24,8 +24,8 @@ class KerambaController extends Controller
     	$keramba->panjang_keramba = $request->input('panjang_keramba'); 
     	$keramba->lebar_keramba = $request->input('lebar_keramba');
     	$keramba->kapasitas_keramba = $request->input('kapasitas_keramba');
-        $keramba->id_kelompok = $request->input('id_kelompok');
-        $keramba->id_user = $request->input('id_user');
+        $keramba->kelompok_id = $request->input('kelompok_id');
+        $keramba->user_id = $request->input('user_id');
     
     	$keramba->save();
     	return response()->json($keramba);

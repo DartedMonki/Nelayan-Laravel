@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ProduksiModel as Produksi;
+use App\KerambaModel as Keramba;
 use Auth;
 
 class ProduksiController extends Controller
@@ -15,8 +16,10 @@ class ProduksiController extends Controller
 	}
 
 	public function create()
-    {
-        return view('produksi.penebaran');
+  {
+		$keramba = Keramba::where('kelompok_id', auth()->user()->kelompok_id )->pluck('nama_keramba', 'id');
+		
+		return view('produksi.penebaran', compact('keramba', $keramba));
 	}
 
 	 public function showbyid($id)
@@ -31,12 +34,12 @@ class ProduksiController extends Controller
     public function tebar(Request $request)
     {
     	$produksi = new Produksi();
-    	$produksi->id_user = $request->input('id_user');
+    	$produksi->user_id = $request->input('user_id');
     	$produksi->nama_ikan = $request->input('nama_ikan');
     	$produksi->panjang_ikan = $request->input('panjang_ikan');
     	$produksi->jumlah_ikan = $request->input('jumlah_ikan'); 
     	$produksi->tanggal_tebar = $request->input('tanggal_tebar');
-    	$produksi->id_keramba = $request->input('id_keramba');
+    	$produksi->keramba_id = $request->input('keramba_id');
 
     	$produksi->save();
     	return redirect()->route('produksi.index')->withStatus(__('Penebaran berhasil dibuat.'));

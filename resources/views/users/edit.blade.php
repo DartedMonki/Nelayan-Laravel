@@ -57,6 +57,19 @@
                                         </span>
                                     @endif
                                 </div>
+                                @if ($kelompok->count() > 0)
+                                <div class="form-group">
+                                    {!! Form::Label('kelompok', 'Kelompok', ['class' => 'form-control-label']) !!}
+                                    {!! Form::select('kelompok_id', $kelompok, null, ['class' => 'form-control form-control-alternative']) !!}
+                                </div>
+                                @else 
+                                <div class="form-group">
+                                    {!! Form::Label('kelompok', 'Kelompok', ['class' => 'form-control-label']) !!}
+                                    <div class="alert alert-warning">
+                                        <strong>{{ __('Belum Ada Kelompok!') }}</strong>
+                                    </div>
+                                </div>
+                                @endif
                                 <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-password">{{ __('Password') }}</label>
                                     <input type="password" name="password" id="input-password" class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}" value="">

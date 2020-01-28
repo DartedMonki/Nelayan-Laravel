@@ -23,10 +23,10 @@ class CreateProduksiTable extends Migration
             $table->date('tanggal_pindah')->nullable();
             $table->date('tanggal_panen')->nullable();
             $table->string('status_panen')->default('Pembesaran');
-            $table->integer('id_keramba')->unsigned();
-            $table->foreign('id_keramba')->references('id')->on('keramba');
-            $table->unsignedBigInteger('id_user');
-            $table->foreign('id_user')->references('id')->on('users');
+            $table->integer('keramba_id')->unsigned();
+            $table->foreign('keramba_id')->references('id')->on('keramba');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

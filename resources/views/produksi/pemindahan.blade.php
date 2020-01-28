@@ -56,14 +56,14 @@
                                 </div>
                                 <div class="form-group{{ $errors->has('status') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-keramb">{{ __('Lokasi Keramba Baru') }}</label>
-                                    <select type="number" name="id_keramba" id="input-keramba" class="form-control form-control-alternative{{ $errors->has('id_keramba') ? ' is-invalid' : '' }}" placeholder="{{ __('Lokasi Keramba Baru') }}">
+                                    <select type="number" name="keramba_id" id="input-keramba" class="form-control form-control-alternative{{ $errors->has('keramba_id') ? ' is-invalid' : '' }}" placeholder="{{ __('Lokasi Keramba Baru') }}">
                                         <option value='1'>Keramba 1</option>
                                         <option value='2'>Keramba 2</option>  
                                     </select>
 
-                                    @if ($errors->has('id_keramba'))
+                                    @if ($errors->has('keramba_id'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('id_keramba') }}</strong>
+                                            <strong>{{ $errors->first('keramba_id') }}</strong>
                                         </span>
                                     @endif
                                 </div>

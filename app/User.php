@@ -6,7 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
-use App\KelompokModel;
+use App\KerambaModel as Keramba;
+use App\ProduksiModel as Produksi;
 
 class User extends Authenticatable
 {
@@ -39,9 +40,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function kelompoks()
+    public function keramba()
     {
-        return $this->belongsToMany(KelompokModel::class)->withTimestamps();
+        return $this->hasMany(Keramba::class);
     }
+    public function produksi()
+    {
+        return $this->hasMany(Produksi::class);
+    }
+    
 }
 

@@ -46,9 +46,7 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <h3>
-                                {{ auth()->user()->name }}<span class="font-weight-light">, 27</span>
-                            </h3>
+                            <h3>{{ auth()->user()->name }}</h3>
                             <div>
                                 <i class="ni education_hat mr-2"></i>
                                 @if (auth()->user()->status == 'admin')

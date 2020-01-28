@@ -12,9 +12,23 @@
                             <div class="col-8">
                                 <h3 class="mb-0">{{ __('Keramba') }}</h3>
                             </div>
+                            @if (auth()->user()->kelompok_id != NULL)
                             <div class="col-4 text-right">
                                 <a href="{{ route('keramba.create') }}" class="btn btn-sm btn-primary">{{ __('Tambah') }}</a>
                             </div>
+                            @else
+                            <div class="card-body">
+                            <div class="col-12">
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        {{ __('Anda Belum Memiliki Kelompok!') }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                            </div>
+                                <h2 class="col-12 mb-0 mt-4 text-center">{{ __('Konfigurasi Kelompok Untuk Mengakses Keramba') }}</h2>
+                            </div>
+                            @endif
                         </div>
                     </div>
                     

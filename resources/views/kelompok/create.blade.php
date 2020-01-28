@@ -1,7 +1,7 @@
-@extends('layouts.app', ['title' => __('Manajemen Kelompok')])
+@extends('layouts.app', ['title' => __('Kelompok')])
 
 @section('content')
-    @include('kelompok.partials.header', ['title' => __('Tambah Kelompok')])   
+    @include('listkelompok.partials.header', ['title' => __('Buat Kelompok')])   
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -10,15 +10,15 @@
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">{{ __('Manajemen Kelompok') }}</h3>
+                                <h3 class="mb-0">{{ __('Kelompok') }}</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('listkelompok.index') }}" class="btn btn-sm btn-primary">{{ __('Batal') }}</a>
+                                <a href="{{ route('kelompok.index') }}" class="btn btn-sm btn-primary">{{ __('Batal') }}</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('listkelompok.store') }}" autocomplete="off">
+                        <form method="post" action="{{ route('kelompok.store') }}" autocomplete="off">
                             @csrf
                             
                             <h6 class="heading-small text-muted mb-4">{{ __('Informasi Kelompok') }}</h6>
@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="form-group{{ $errors->has('ketua_kelompok') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-ketua-kel">{{ __('Ketua Kelompok') }}</label>
-                                    <input type="text" name="ketua_kelompok" id="input-ketua-kel" class="form-control form-control-alternative{{ $errors->has('ketua_kelompok') ? ' is-invalid' : '' }}" placeholder="{{ __('Ketua Kelompok') }}" value="{{ old('ketua_kelompok') }}" required>
+                                    <input type="text" name="ketua_kelompok" id="input-ketua-kel" class="form-control form-control-alternative{{ $errors->has('ketua_kelompok') ? ' is-invalid' : '' }}" placeholder="{{ __('Ketua Kelompok') }}" value="{{ auth()->user()->name }}" disabled>
 
                                     @if ($errors->has('ketua_kelompok'))
                                         <span class="invalid-feedback" role="alert">

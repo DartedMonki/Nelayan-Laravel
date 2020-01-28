@@ -99,7 +99,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('kelompok.edit') }}">
+                    <a class="nav-link" href="{{ route('kelompok.index') }}">
                         <i class="fa fa-users text-blue"></i>{{ __('Kelompok') }}
                     </a>
                 </li>

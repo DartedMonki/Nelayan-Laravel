@@ -23,7 +23,7 @@
                             
                             <h6 class="heading-small text-muted mb-4">{{ __('Informasi Budi Daya') }}</h6>
                             <div class="pl-lg-4">
-                                <input type="hidden" name="id_user" value="{{ auth()->user()->id }}">
+                                <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                                 <div class="form-group{{ $errors->has('nama_ikan') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-nama-ikan">{{ __('Nama Ikan') }}</label>
                                     <input type="text" name="nama_ikan" id="input-nama-ikan" class="form-control form-control-alternative{{ $errors->has('nama_ikan') ? ' is-invalid' : '' }}" placeholder="{{ __('Nama Ikan') }}" value="{{ old('nama_ikan') }}" required autofocus>
@@ -64,7 +64,7 @@
                                         </span>
                                     @endif
                                 </div>
-                                <div class="form-group{{ $errors->has('status') ? ' has-danger' : '' }}">
+                                <!-- <div class="form-group{{ $errors->has('status') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-keramb">{{ __('Lokasi Keramba') }}</label>
                                     <select type="number" name="id_keramba" id="input-keramba" class="form-control form-control-alternative{{ $errors->has('id_keramba') ? ' is-invalid' : '' }}" placeholder="{{ __('Lokasi Keramba') }}">
                                         <option value='1'>Keramba 1</option>
@@ -76,11 +76,24 @@
                                             <strong>{{ $errors->first('id_keramba') }}</strong>
                                         </span>
                                     @endif
+                                </div> -->
+                                @if ($keramba->count() > 0)
+                                <div class="form-group">
+                                    {!! Form::Label('keramba', 'Lokasi Keramba', ['class' => 'form-control-label']) !!}
+                                    {!! Form::select('keramba_id', $keramba, null, ['class' => 'form-control form-control-alternative']) !!}
                                 </div>
-
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">{{ __('Simpan') }}</button>
                                 </div>
+                                @else 
+                                <div class="form-group">
+                                    {!! Form::Label('keramba', 'Lokasi Keramba', ['class' => 'form-control-label']) !!}
+                                    <div class="alert alert-warning">
+                                        <strong>{{ __('Tidak Ada Keramba! Mohon Masukkan Keramba Terlebih Dahulu') }}</strong>
+                                    </div>
+                                </div>
+                                @endif
+                                
                             </div>
                         </form>
                     </div>
