@@ -28,7 +28,7 @@ class KerambaController extends Controller
         $keramba->user_id = $request->input('user_id');
     
     	$keramba->save();
-    	return response()->json($keramba);
+    	// return response()->json($keramba);
 		
     	return redirect()->route('keramba.index')->withStatus(__('Keramba berhasil dibuat.'));
     }

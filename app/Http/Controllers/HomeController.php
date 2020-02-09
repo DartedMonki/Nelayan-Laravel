@@ -25,7 +25,11 @@ class HomeController extends Controller
      */
     public function index(Keramba $model)
     {
-
-        return view('dashboard', ['keramba' => $model->paginate(6)]);
+        if ($model->count()){
+            return view('dashboard', ['keramba' => $model->paginate(6)]);
+        }
+        else {
+            return redirect()->route('welcome')->withStatus(__('Belum Ada Keramba, Silahkan Buka Halaman Keramba Untuk Menambahkan Keramba'));
+        }
     }
 }

@@ -112,12 +112,12 @@
                     <div class="collapse hide" id="navbar-iot">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ route('sensor.index') }}">
                                     <i class="fa fa-rss text-blue"></i>{{ __('Sensor') }}
                                 </a>
                             </li> 
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ route('pakan.index') }}">
                                     <i class="fa fa-braille text-blue"></i>{{ __('Pakan Otomatis') }}
                                 </a>
                             </li>    

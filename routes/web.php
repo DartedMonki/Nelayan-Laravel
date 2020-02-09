@@ -42,6 +42,12 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('keramba', 'KerambaController', ['except' => ['show']]);
 });
 
+// Route untuk Perangkat
+Route::group(['middleware' => 'auth'], function () {
+	Route::resource('sensor', 'SensorController', ['except' => ['show']]);
+	Route::resource('pakan', 'PakanController', ['except' => ['show']]);
+});
+
 // Route Untuk Kelompok
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('kelompok', ['as' => 'kelompok.index', 'uses' => 'KelompokController@index']);

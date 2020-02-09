@@ -28,7 +28,21 @@
                             </div>
                         @endif
                     </div>
-
+                    @foreach ($produksi as $prod)
+                        @if ($prod->user_id == auth()->user()->id || auth()->user()->status == 'admin')
+                        <div class="px-3">
+                            <a href=# class="card shadow card-body mb-3">
+                                <h3 class="card-title">{{ $prod->nama_ikan }}</h3>
+                                <h4 class="card-subtitle text-muted">{{ $prod->jumlah_ikan }} {{ __('Ekor') }}</h4>
+                                <p class="card-text font-weight-bold mt-2">{{ __('Ukuran:') }} {{ $prod->panjang_ikan }} {{ __('cm') }}
+                                <br>
+                                {{ __('Lokasi:') }} {{ $prod->keramba->nama_keramba }}
+                                </p>
+                                
+                            </a>
+                        </div>
+                        @endif
+                    @endforeach
                     <div class="table-responsive">
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">

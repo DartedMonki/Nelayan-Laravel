@@ -42,61 +42,26 @@
                             </div>
                         @endif
                     </div>
-
-                    <!-- <div class="table-responsive">
-                        <table class="table align-items-center table-flush">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">{{ __('Nama') }}</th>
-                                    <th scope="col">{{ __('Ketua') }}</th>
-                                    <th scope="col">{{ __('Bendahara') }}</th>
-                                    <th scope="col">{{ __('Humas') }}</th>
-                                    <th scope="col">{{ __('Tanggal Dibuat') }}</th>
-                                    <th scope="col">{{ __('Menu') }}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($keramba as $krb)
-                                    <tr>
-                                        <td>{{ $krb->nama_kelompok }}</td>
-                                        <td>
-                                            {{ $krb->ketua_kelompok }}
-                                        </td>
-                                        <td>
-                                            {{ $krb->bendahara_kelompok }}
-                                        </td>
-                                        <td>
-                                            {{ $krb->humas_kelompok }}
-                                        </td>
-                                        
-                                        <td class="text-right">
-                                            <div class="dropdown">
-                                                <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <i class="fas fa-ellipsis-v"></i>
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                        <form action="{{ route('listkelompok.destroy', $krb->id) }}" method="post">
-                                                            @csrf
-                                                            @method('delete')
-                                                            
-                                                            <a class="dropdown-item" href="{{ route('listkelompok.edit', $krb->id) }}">{{ __('Ubah') }}</a>
-                                                            <button type="button" class="dropdown-item" onclick="confirm('{{ __("Yakin menghapus kelompok ini?") }}') ? this.parentElement.submit() : ''">
-                                                                {{ __('Hapus') }}
-                                                            </button>
-                                                        </form>    
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="card-footer py-4">
-                        <nav class="d-flex justify-content-end" aria-label="...">
-                            {{ $keramba->links() }}
-                        </nav>
-                    </div> -->
+                    @foreach ($keramba as $krb)
+                        @if ($krb->user->id == auth()->user()->id || auth()->user()->status == 'admin' || $krb->kelompok->id == auth()->user()->kelompok_id)
+                        <div class="px-3">
+                            <div href=# class="card shadow card-body mb-3">
+                                <h3 class="card-title">{{ $krb->nama_keramba }}</h3>
+                                <h4 class="card-subtitle text-muted">{{ __('Kelompok') }} {{ $krb->kelompok->nama_kelompok }}</h4>
+                                <p class="card-text font-weight-bold mt-2">{{ __('Ukuran:') }} {{ $krb->panjang_keramba }} cm x {{ $krb->lebar_keramba }} cm
+                                <br>
+                                {{ __('Kapasitas') }} {{ $krb->kapasitas_keramba }} {{ __('Ekor') }}
+                                </p>
+                                <form class="row align-items-center px-3" action="{{ route('keramba.destroy', $krb->id) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                    <a href="{{ route('keramba.edit', $krb->id) }}" class="col btn btn-primary">Edit</a>
+                                    <button type="button" class="col btn btn-primary" onclick="confirm('{{ __("Yakin menghapus produksi ini?") }}') ? this.parentElement.submit() : ''">Hapus</button>
+                                </form> 
+                            </div>
+                        </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
         </div>
