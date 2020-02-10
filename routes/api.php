@@ -17,6 +17,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/apikelompok','ApiKelompokController@index');
+Route::get('/apikelompok/{id}','ApiKelompokController@show');
+Route::post('/apikelompokstore','ApiKelompokController@store');
+Route::put('/apikelompokstore','ApiKelompokController@store');
+Route::delete('/apikelompokdelete/{id}','ApiKelompokController@destroy');
 
 Route::get('/produksishowapi','ProduksiController@index');
 Route::get('/produksishowapi/{id}','ProduksiController@showbyid');
