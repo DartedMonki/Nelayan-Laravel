@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ApiKelompokSeeder extends Seeder
+class SensorSuhuSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class ApiKelompokSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\ApiKelompokModel::class, 30)->create();
+        factory(App\SensorSuhuModel::class, 30)->create();
     }
 }

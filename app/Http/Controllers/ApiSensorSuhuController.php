@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\KelompokModel;
-use App\Http\Resources\KelompokResources;
+use App\SensorSuhuModel as SensorSuhu;
+use App\Http\Resources\SensorSuhuResources;
 
-class ApiKelompokController extends Controller
+class ApiSensorSuhuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class ApiKelompokController extends Controller
      */
     public function index()
     {
-        $kelompok = KelompokModel::paginate(5);
-        return KelompokResources::collection($kelompok);
+        $sensor_suhu = SensorSuhu::paginate(5);
+        return SensorSuhuResources::collection($sensor_suhu);
     }
 
     /**
@@ -38,16 +38,14 @@ class ApiKelompokController extends Controller
      */
     public function store(Request $request)
     {
-        $kelompok = $request ->isMethod('put') ? KelompokModel::findOrFail($request->kelompok_id) : new KelompokModel;
+        $sensor_suhu = $request ->isMethod('put') ? SensorSuhuModel::findOrFail($request->sensor_suhu_id) : new SensorSuhuModel;
 
-        $kelompok->id = $request->input('kelompok_id');
-        $kelompok->nama_kelompok = $request->input('nama_kelompok');
-        $kelompok->ketua_kelompok = $request->input('ketua_kelompok');
-        $kelompok->bendahara_kelompok = $request->input('bendahara_kelompok');
-        $kelompok->humas_kelompok = $request->input('humas_kelompok');
+        $sensor_suhu->id = $request->input('sensor_suhu_id');
+        $sensor_suhu->suhu_air = $request->input('suhu_air');
+        $sensor_suhu->keramba_id = $request->input('keramba_id');
 
-        if($kelompok->save()){
-            return new KelompokResources($kelompok);
+        if($sensor_suhu->save()){
+            return new SensorSuhuResources($sensor_suhu);
         }
     }
 
@@ -59,8 +57,8 @@ class ApiKelompokController extends Controller
      */
     public function show($id)
     {
-        $kelompok = KelompokModel::findOrFail($id);
-        return new KelompokResources($kelompok);
+        $sensor_suhu = SensorSuhuModel::findOrFail($id);
+        return new SensorSuhuResources($sensor_suhu);
     }
 
     /**
@@ -94,9 +92,9 @@ class ApiKelompokController extends Controller
      */
     public function destroy($id)
     {
-        $kelompok = KelompokModel::findOrFail($id);
-        if($kelompok->delete()){
-        return new KelompokResources($kelompok);
+        $sensor_suhu = SensorSuhuModel::findOrFail($id);
+        if($sensor_suhu->delete()){
+        return new SensorSuhuResources($sensor_suhu);
     }
 }
 }

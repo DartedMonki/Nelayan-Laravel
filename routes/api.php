@@ -19,9 +19,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/apikelompok','ApiKelompokController@index');
 Route::get('/apikelompok/{id}','ApiKelompokController@show');
-Route::post('/apikelompokstore','ApiKelompokController@store');
-Route::put('/apikelompokstore','ApiKelompokController@store');
-Route::delete('/apikelompokdelete/{id}','ApiKelompokController@destroy');
+Route::post('/apikelompok/store','ApiKelompokController@store');
+Route::put('/apikelompok/store','ApiKelompokController@store');
+Route::delete('/apikelompok/delete/{id}','ApiKelompokController@destroy');
+
+Route::get('/apisensorsuhu','ApiSensorSuhuController@index');
+Route::get('/apisensorsuhu/{id}','ApiSensorSuhuController@show');
+Route::post('/apisensorsuhu/store','ApiSensorSuhuController@store');
+Route::put('/apisensorsuhu/store','ApiSensorSuhuController@store');
+Route::delete('/apikelompok/delete/{id}','ApiSensorSuhuController@destroy');
 
 Route::get('/produksishowapi','ProduksiController@index');
 Route::get('/produksishowapi/{id}','ProduksiController@showbyid');

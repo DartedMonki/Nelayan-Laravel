@@ -23,7 +23,6 @@ class CreateSensorTable extends Migration
             $table->string('curah_hujan');
             $table->string('kecepatan_arus');
             $table->integer('keramba_id')->unsigned();
-            $table->foreign('keramba_id')->references('id')->on('keramba');
             $table->timestamps();
         });
     }

@@ -17,7 +17,6 @@ class CreateSensorsuhuTable extends Migration
             $table->Increments('id');
             $table->string('suhu_air');
             $table->integer('keramba_id')->unsigned();
-            $table->foreign('keramba_id')->references('id')->on('keramba');
             $table->timestamps();
         });
     }

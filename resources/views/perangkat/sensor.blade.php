@@ -29,11 +29,31 @@
                         @endif
                     </div>
 
-                   
+                    <!-- <div id="app">
+                        <div class="container-fluid">
+                            <sensor></sensor>
+                        </div>
+                    </div> -->
+                    <ul id="listSensorSuhu">
+
+                    </ul>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+                    var jsonData;
+                    $(document).ready(function(){
+                        $.getJSON( "http://localhost:8000/api/apisensorsuhu", function( response ) {
+                            jsonData = response;
+                            console.log('success', jsonData);
+                        });
+                    });
+                    </script>
+                    <!-- <script src="{{ asset('js/app.js') }}"></script> -->
+                    
                 </div>
             </div>
         </div>
             
         @include('layouts.footers.auth')
     </div>
+
+
 @endsection

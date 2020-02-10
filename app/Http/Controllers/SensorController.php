@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\SensorModel;
+use App\SensorModel as Sensor;
+use App\SensorSuhuModel as SensorSuhu;
 
 class SensorController extends Controller
 {
-    public function index(SensorModel $model)
+    public function index(SensorSuhu $model)
 	{
 		// return SensorModel::all();
 		return view('perangkat.sensor', ['sensor' => $model->paginate(15)]);

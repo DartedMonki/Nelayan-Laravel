@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ApiKelompokResources extends JsonResource
+class SensorSuhuResources extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,10 +18,8 @@ class ApiKelompokResources extends JsonResource
 
         return [
             'id'=> $this->id,
-            'nama_kelompok'=>$this->nama_kelompok,
-            'ketua_kelompok'=>$this->ketua_kelompok,
-            'bendahara_kelompok'=>$this->bendahara_kelompok,
-            'humas_kelompok'=>$this->humas_kelompok
+            'suhu_air'=>$this->suhu_air,
+            'keramba_id'=>$this->keramba_id
         ];
     }
     public function with($request){
