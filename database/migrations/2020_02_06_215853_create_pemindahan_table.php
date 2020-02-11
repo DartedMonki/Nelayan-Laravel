@@ -18,8 +18,10 @@ class CreatePemindahanTable extends Migration
             $table->integer('jumlah_ikan')->nullable();
             $table->integer('panjang_ikan')->nullable();
             $table->date('tanggal_pindah')->nullable();
-            $table->integer('keramba_id')->unsigned();
-            $table->foreign('keramba_id')->references('id')->on('keramba');
+            $table->integer('keramba_sebelum')->unsigned();
+            $table->foreign('keramba_sebelum')->references('id')->on('keramba');
+            $table->integer('keramba_sesudah')->unsigned();
+            $table->foreign('keramba_sesudah')->references('id')->on('keramba');
             $table->integer('produksi_id')->unsigned();
             $table->foreign('produksi_id')->references('id')->on('produksi');
             $table->unsignedBigInteger('user_id');

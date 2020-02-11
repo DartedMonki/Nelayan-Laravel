@@ -16,7 +16,7 @@ class CreateSensorwindTable extends Migration
         Schema::create('sensor_wind', function (Blueprint $table) {
              $table->Increments('id');
             $table->string('time');
-            $table->string('date');
+            $table->date('date');
             $table->string('arah_angin');
             $table->string('kecepatan_angin');
             $table->timestamps();

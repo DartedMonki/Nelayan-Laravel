@@ -16,7 +16,7 @@ class CreateSensorwaveTable extends Migration
         Schema::create('sensor_wave', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('time');
-            $table->string('date');
+            $table->date('date');
             $table->string('ketinggian_air');
             $table->timestamps();
         });

@@ -16,7 +16,7 @@ class CreateSensorhumtempTable extends Migration
         Schema::create('sensor_humtemp', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('time');
-            $table->string('date');
+            $table->date('date');
             $table->string('humidity');
             $table->string('temperature');
             $table->timestamps();
