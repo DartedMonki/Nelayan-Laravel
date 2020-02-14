@@ -19,8 +19,8 @@ class SensorWindResources extends JsonResource
             'id'=> $this->id,
             'time'=>$this->time,
             'date'=>$this->date,
-            'arah_angin'=>$this->$arah_angin,
-            'kecepatan_angin'=>$this->$kecepatan_angin
+            'arah_angin'=>$this->arah_angin,
+            'kecepatan_angin'=>$this->kecepatan_angin
         ];
     }
     public function with($request){

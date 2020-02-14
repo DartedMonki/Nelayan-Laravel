@@ -19,7 +19,7 @@ class SensorWaveResources extends JsonResource
             'id'=> $this->id,
             'time'=>$this->time,
             'date'=>$this->date,
-            'ketinggian_air'=>$this->$ketinggian_air
+            'ketinggian_air'=>$this->ketinggian_air
         ];
     }
     public function with($request){

@@ -27,7 +27,7 @@ Route::get('/apisensorsuhu','ApiSensorSuhuController@index');
 Route::get('/apisensorsuhu/{id}','ApiSensorSuhuController@show');
 Route::post('/apisensorsuhu/store','ApiSensorSuhuController@store');
 Route::put('/apisensorsuhu/store','ApiSensorSuhuController@store');
-Route::delete('/apikelompok/delete/{id}','ApiSensorSuhuController@destroy');
+Route::delete('/apisensorsuhu/delete/{id}','ApiSensorSuhuController@destroy');
 
 Route::get('/apikeramba','ApiKerambaController@index');
 Route::get('/apikeramba/{id}','ApiKerambaController@show');

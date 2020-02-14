@@ -16,7 +16,7 @@ class ApiSensorSuhuController extends Controller
      */
     public function index()
     {
-        $sensor_suhu = SensorSuhu::paginate(5);
+        $sensor_suhu = SensorSuhu::paginate(2);
         return SensorSuhuResources::collection($sensor_suhu);
     }
 
@@ -38,7 +38,7 @@ class ApiSensorSuhuController extends Controller
      */
     public function store(Request $request)
     {
-        $sensor_suhu = $request ->isMethod('put') ? SensorSuhuModel::findOrFail($request->sensor_suhu_id) : new SensorSuhuModel;
+        $sensor_suhu = $request ->isMethod('put') ? SensorDo::findOrFail($request->sensor_suhu_id) : new SensorSuhu;
 
         $sensor_suhu->id = $request->input('sensor_suhu_id');
         $sensor_suhu->suhu_air = $request->input('suhu_air');
@@ -57,7 +57,7 @@ class ApiSensorSuhuController extends Controller
      */
     public function show($id)
     {
-        $sensor_suhu = SensorSuhuModel::findOrFail($id);
+        $sensor_suhu = SensorSuhu::findOrFail($id);
         return new SensorSuhuResources($sensor_suhu);
     }
 
@@ -90,11 +90,10 @@ class ApiSensorSuhuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $sensor_suhu = SensorSuhuModel::findOrFail($id);
-        if($sensor_suhu->delete()){
-        return new SensorSuhuResources($sensor_suhu);
+        $sensor_suhu = SensorSuhu::findOrFail($request->id)->delete();
+        return response()->json(['success' => true],200);
+
     }
-}
 }

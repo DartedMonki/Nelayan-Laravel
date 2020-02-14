@@ -19,8 +19,8 @@ class SensorHumTempResources extends JsonResource
             'id'=> $this->id,
             'time'=>$this->time,
             'date'=>$this->date,
-            'humidity'=>$this->$humidity,
-            'temperature'=>$this->$temperature
+            'humidity'=>$this->humidity,
+            'temperature'=>$this->temperature
         ];
     }
     public function with($request){

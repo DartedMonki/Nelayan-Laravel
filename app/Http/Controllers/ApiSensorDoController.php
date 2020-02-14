@@ -16,7 +16,7 @@ class ApiSensorDoController extends Controller
      */
     public function index()
     {
-        $sensor_do = SensorDo::paginate(5);
+        $sensor_do = SensorDo::paginate(2);
         return SensorDoResources::collection($sensor_do);
     }
 
