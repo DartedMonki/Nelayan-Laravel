@@ -37,9 +37,9 @@ Route::delete('/apikerambadelete/{id}','ApiKerambaController@destroy');
 
 Route::get('/apiproduksi','ApiProduksiController@index');
 Route::get('/apiproduksi/{id}','ApiProduksiController@show');
-Route::post('/apiproduksistore','ApiProduksiController@store');
-Route::put('/apiproduksistore','ApiProduksiController@store');
-Route::delete('/apiproduksidelete/{id}','ApiProduksiController@destroy');
+Route::post('/apiproduksi/store','ApiProduksiController@store');
+Route::put('/apiproduksi/store','ApiProduksiController@store');
+Route::delete('/apiproduksi/delete/{id}','ApiProduksiController@destroy');
 
 Route::get('/apisensordo','ApiSensorDoController@index');
 Route::get('/apisensordo/{id}','ApiSensorDoController@show');
@@ -64,6 +64,12 @@ Route::get('/apisensorwind/{id}','ApiSensorwindController@show');
 Route::post('/apisensorwindstore','ApiSensorwindController@store');
 Route::put('/apisensorwindstore','ApiSensorwindController@store');
 Route::delete('/apisensorwinddelete/{id}','ApiSensorwindController@destroy');
+
+Route::get('/apipakan','ApiPakanController@index');
+Route::get('/apipakan/{id}','ApiPakanController@show');
+Route::post('/apipakan/store','ApiPakanController@store');
+Route::put('/apipakan/store','ApiPakanController@store');
+Route::delete('/apipakan/delete/{id}','ApiPakanController@destroy');
 
 Route::get('/apipencucian','ApiProduksiController@pencucianget');
 Route::get('/apipemindahan','ApiProduksiController@pencucianget');

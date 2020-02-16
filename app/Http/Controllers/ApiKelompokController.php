@@ -96,7 +96,8 @@ class ApiKelompokController extends Controller
     {
         $kelompok = KelompokModel::findOrFail($id);
         if($kelompok->delete()){
-        return new KelompokResources($kelompok);
+            return new KelompokResources($kelompok);
+        }
     }
 }
 }

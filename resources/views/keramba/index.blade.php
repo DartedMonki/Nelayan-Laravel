@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => __('Keramba')])
 
 @section('content')
-    @include('listkelompok.partials.header', ['title' => __('List Keramba')])   
+    @include('users.partials.header', ['title' => __('List Keramba')])   
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -42,26 +42,28 @@
                             </div>
                         @endif
                     </div>
-                    @foreach ($keramba as $krb)
-                        @if ($krb->user->id == auth()->user()->id || auth()->user()->status == 'admin' || $krb->kelompok->id == auth()->user()->kelompok_id)
-                        <div class="px-3">
-                            <div href=# class="card shadow card-body mb-3">
-                                <h3 class="card-title">{{ $krb->nama_keramba }}</h3>
-                                <h4 class="card-subtitle text-muted">{{ __('Kelompok') }} {{ $krb->kelompok->nama_kelompok }}</h4>
-                                <p class="card-text font-weight-bold mt-2">{{ __('Ukuran:') }} {{ $krb->panjang_keramba }} cm x {{ $krb->lebar_keramba }} cm
-                                <br>
-                                {{ __('Kapasitas') }} {{ $krb->kapasitas_keramba }} {{ __('Ekor') }}
-                                </p>
-                                <form class="row align-items-center px-3" action="{{ route('keramba.destroy', $krb->id) }}" method="post">
-                                @csrf
-                                @method('delete')
-                                    <a href="{{ route('keramba.edit', $krb->id) }}" class="col btn btn-primary">Edit</a>
-                                    <button type="button" class="col btn btn-primary" onclick="confirm('{{ __("Yakin menghapus produksi ini?") }}') ? this.parentElement.submit() : ''">Hapus</button>
-                                </form> 
+                    @if (auth()->user()->kelompok_id != NULL)
+                        @foreach ($keramba as $krb)
+                            @if ($krb->user->id == auth()->user()->id || auth()->user()->status == 'admin' || $krb->kelompok->id == auth()->user()->kelompok_id)
+                            <div class="px-3">
+                                <div href=# class="card shadow card-body mb-3">
+                                    <h3 class="card-title">{{ $krb->nama_keramba }}</h3>
+                                    <h4 class="card-subtitle text-muted">{{ __('Kelompok') }} {{ $krb->kelompok->nama_kelompok }}</h4>
+                                    <p class="card-text font-weight-bold mt-2">{{ __('Ukuran:') }} {{ $krb->panjang_keramba }} cm x {{ $krb->lebar_keramba }} cm
+                                    <br>
+                                    {{ __('Kapasitas') }} {{ $krb->kapasitas_keramba }} {{ __('Ekor') }}
+                                    </p>
+                                    <form class="row align-items-center px-3" action="{{ route('keramba.destroy', $krb->id) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                        <a href="{{ route('keramba.edit', $krb->id) }}" class="col btn btn-primary">Edit</a>
+                                        <button type="button" class="col btn btn-primary" onclick="confirm('{{ __("Yakin menghapus produksi ini?") }}') ? this.parentElement.submit() : ''">Hapus</button>
+                                    </form> 
+                                </div>
                             </div>
-                        </div>
-                        @endif
-                    @endforeach
+                            @endif
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>

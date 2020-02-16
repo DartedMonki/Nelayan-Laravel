@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ProduksiResources extends JsonResource
+class PakanResources extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,17 +15,10 @@ class ProduksiResources extends JsonResource
     public function toArray($request)
     {
         // return parent::toArray($request);
-
         return [
             'id'=> $this->id,
-            'nama_ikan'=>$this->nama_ikan,
-            'panjang_ikan'=>$this->panjang_ikan,
-            'jumlah_ikan'=>$this->jumlah_ikan,
-            'tanggal_tebar'=>$this->tanggal_tebar,
-            'tanggal_panen'=>$this->tanggal_panen,
-            'status_panen'=>$this->status_panen,
-            'keramba_id'=>$this->keramba_id,
-            'user_id'=>$this->user_id
+            'baterai_pakan'=>$this->baterai_pakan,
+            'keramba_id'=>$this->keramba_id
         ];
     }
     public function with($request){

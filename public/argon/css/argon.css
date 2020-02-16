@@ -5703,7 +5703,8 @@ input[type='button'].btn-block
     word-wrap: break-word;
 
     border: 1px solid rgba(0, 0, 0, .05);
-    border-radius: .375rem; 
+    /* border-radius: .375rem;  */
+    border-radius: 1.5rem; 
     background-color: #fff;
     background-clip: border-box;
 }
@@ -5762,11 +5763,11 @@ input[type='button'].btn-block
     padding: 1.25rem 1.5rem;
 
     border-bottom: 1px solid rgba(0, 0, 0, .05); 
-    background-color: #fff;
+    /* background-color: #fff; */
 }
 .card-header:first-child
 {
-    border-radius: calc(.375rem - 1px) calc(.375rem - 1px) 0 0;
+    border-radius: 1.5rem 1.5rem 0 0;
 }
 .card-header + .list-group .list-group-item:first-child
 {
@@ -5778,7 +5779,7 @@ input[type='button'].btn-block
     padding: 1.25rem 1.5rem;
 
     border-top: 1px solid rgba(0, 0, 0, .05); 
-    background-color: #fff;
+    /* background-color: #fff; */
 }
 .card-footer:last-child
 {

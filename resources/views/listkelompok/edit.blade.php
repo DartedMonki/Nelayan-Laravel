@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => __('Manajemen Kelompok')])
 
 @section('content')
-    @include('listkelompok.partials.header', ['title' => __('Edit Kelompok')])   
+    @include('users.partials.header', ['title' => __('Edit Kelompok')])   
 
     <div class="container-fluid mt--7">
         <div class="row">

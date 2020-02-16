@@ -20,7 +20,7 @@ class ApiProduksiController extends Controller
      */
     public function index()
     {
-        $produksi = ProduksiModel::paginate(15);
+        $produksi = ProduksiModel::paginate(5);
         return ProduksiResources::collection($produksi);
     }
 

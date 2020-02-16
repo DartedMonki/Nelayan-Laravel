@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => __('Produksi')])
 
 @section('content')
-    @include('listkelompok.partials.header', ['title' => __('Pemindahan')])   
+    @include('users.partials.header', ['title' => __('Pemindahan')])   
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -55,7 +55,7 @@
                                     @endif
                                 </div>
                                 <div class="form-group{{ $errors->has('status') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-keramb">{{ __('Lokasi Keramba Baru') }}</label>
+                                    <label class="form-control-label" for="input-keramba">{{ __('Lokasi Keramba Baru') }}</label>
                                     <select type="number" name="keramba_id" id="input-keramba" class="form-control form-control-alternative{{ $errors->has('keramba_id') ? ' is-invalid' : '' }}" placeholder="{{ __('Lokasi Keramba Baru') }}">
                                         <option value='1'>Keramba 1</option>
                                         <option value='2'>Keramba 2</option>  

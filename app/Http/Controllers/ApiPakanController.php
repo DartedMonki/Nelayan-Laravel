@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\SensorSuhuModel as SensorSuhu;
-use App\Http\Resources\SensorSuhuResources;
+use App\PakanModel as Pakan;
+use App\Http\Resources\PakanResources;
 
-class ApiSensorSuhuController extends Controller
+class ApiPakanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class ApiSensorSuhuController extends Controller
      */
     public function index()
     {
-        $sensor_suhu = SensorSuhu::paginate(2);
-        return SensorSuhuResources::collection($sensor_suhu);
+        $pakan = Pakan::paginate(2);
+        return PakanResources::collection($pakan);
     }
 
     /**
@@ -38,14 +38,14 @@ class ApiSensorSuhuController extends Controller
      */
     public function store(Request $request)
     {
-        $sensor_suhu = $request ->isMethod('put') ? SensorSuhu::findOrFail($request->sensor_suhu_id) : new SensorSuhu;
+        $pakan = $request ->isMethod('put') ? Pakan::findOrFail($request->pakan_id) : new Pakan;
 
-        $sensor_suhu->id = $request->input('sensor_suhu_id');
-        $sensor_suhu->suhu_air = $request->input('suhu_air');
-        $sensor_suhu->keramba_id = $request->input('keramba_id');
+        $pakan->id = $request->input('pakan_id');
+        $pakan->baterai_pakan = $request->input('baterai_pakan');
+        $pakan->keramba_id = $request->input('keramba_id');
 
-        if($sensor_suhu->save()){
-            return new SensorSuhuResources($sensor_suhu);
+        if($pakan->save()){
+            return new PakanResources($pakan);
         }
     }
 
@@ -57,8 +57,8 @@ class ApiSensorSuhuController extends Controller
      */
     public function show($id)
     {
-        $sensor_suhu = SensorSuhu::findOrFail($id);
-        return new SensorSuhuResources($sensor_suhu);
+        $pakan = Pakan::findOrFail($id);
+        return new PakanResources($pakan);
     }
 
     /**
@@ -92,7 +92,7 @@ class ApiSensorSuhuController extends Controller
      */
     public function destroy(Request $request)
     {
-        $sensor_suhu = SensorSuhu::findOrFail($request->id)->delete();
+        $pakan = Pakan::findOrFail($request->id)->delete();
         return response()->json(['success' => true],200);
 
     }

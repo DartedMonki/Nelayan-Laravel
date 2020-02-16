@@ -44,8 +44,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 // Route untuk Perangkat
 Route::group(['middleware' => 'auth'], function () {
-	Route::resource('sensor', 'SensorController', ['except' => ['show']]);
-	Route::resource('pakan', 'PakanController', ['except' => ['show']]);
+	Route::get('sensor', ['as' => 'sensor.index', 'uses' => 'PageController@sensor']);
+	Route::get('pakan', ['as' => 'pakan.index', 'uses' => 'PageController@pakan']);
 });
 
 // Route Untuk Kelompok
