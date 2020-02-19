@@ -51,12 +51,12 @@ class ApiKerambaController extends Controller
 
     public function showkerambabyidkelompok($kelompok_id)
     {
-        $keramba = KerambaModel::where(compact('kelompok_id'))->firstOrFail();
+        $keramba = KerambaModel::where(compact('kelompok_id'))->get();
         if(is_null($keramba))
         {
             return response()->json("not found");
         }
-        return new KerambaResources($keramba);
+        return KerambaResources::collection($keramba);
     }
     
 

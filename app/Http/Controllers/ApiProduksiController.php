@@ -112,12 +112,12 @@ class ApiProduksiController extends Controller
     }
     public function showproduksibyidkelompok($kelompok_id)
     {
-        $produksi = ProduksiModel::where(compact('kelompok_id'))->firstOrFail();
+        $produksi = ProduksiModel::where(compact('kelompok_id'))->get();
         if(is_null($produksi))
         {
             return response()->json("not found");
         }
-        return new ProduksiResources($produksi);
+        return ProduksiResources::collection($produksi);
     }
     // Task::with('project')->get(); 
 
