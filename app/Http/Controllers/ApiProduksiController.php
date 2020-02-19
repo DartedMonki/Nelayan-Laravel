@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\ProduksiModel;
+use App\KelompokModel;
 use App\Http\Resources\ProduksiResources;
 use App\PencucianModel;
 use App\Http\Resources\PencucianResources;
@@ -46,11 +47,11 @@ class ApiProduksiController extends Controller
     	$produksi->jumlah_ikan = $request->input('jumlah_ikan'); 
     	$produksi->tanggal_tebar = $request->input('tanggal_tebar');
         $produksi->keramba_id = $request->input('keramba_id');
+        $produksi->kelompok_id = $request->input('kelompok_id');
         
         if($produksi->save()){
             return new ProduksiResources($produksi);
         }
-
     }
 
     public function pencucianstore(Request $request)
@@ -109,16 +110,16 @@ class ApiProduksiController extends Controller
         $pemindahan = PemindahanModel::findOrFail($id);
         return new PemindahanResources($pemindahan);
     }
-    public function showproduksibyidkelompok($id)
+    public function showproduksibyidkelompok($kelompok_id)
     {
-        $produksi = Kelompok::where(compact('id'))->firstOrFail();
+        $produksi = ProduksiModel::where(compact('kelompok_id'))->firstOrFail();
         if(is_null($produksi))
         {
             return response()->json("not found");
         }
         return new ProduksiResources($produksi);
     }
-
+    // Task::with('project')->get(); 
 
     /**
      * Show the form for editing the specified resource.

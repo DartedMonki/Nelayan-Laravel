@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\KerambaModel as Keramba;
+use App\ProduksiModel;
 
 class KelompokModel extends Model
 {
@@ -20,7 +21,7 @@ class KelompokModel extends Model
     }
     public function produksi()
     {
-        return $this->hasMany(Produksi::class);
+        return $this->hasMany('App\ProduksiModel');
     }
     public function kelompok()
     {

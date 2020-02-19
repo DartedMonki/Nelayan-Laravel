@@ -38,7 +38,7 @@ Route::delete('/apikerambadelete/{id}','ApiKerambaController@destroy');
 
 Route::get('/apiproduksi','ApiProduksiController@index');
 Route::get('/apiproduksi/{id}','ApiProduksiController@show');
-Route::get('/apiproduksiidkelompok/{id}','ApiProduksiController@showproduksibyidkelompok');
+Route::get('/apiproduksiidkelompok/{kelompok_id}','ApiProduksiController@showproduksibyidkelompok');
 Route::post('/apiproduksi/store','ApiProduksiController@store');
 Route::put('/apiproduksi/store','ApiProduksiController@store');
 Route::delete('/apiproduksi/delete/{id}','ApiProduksiController@destroy');
