@@ -18,4 +18,12 @@ class KelompokModel extends Model
     {
         return $this->hasMany(Keramba::class);
     }
+    public function produksi()
+    {
+        return $this->hasMany(Produksi::class);
+    }
+    public function kelompok()
+    {
+        return $this->hasMany(Kelompok::class);
+    }
 }

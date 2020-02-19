@@ -49,6 +49,17 @@ class ApiKerambaController extends Controller
         return new KerambaResources($keramba);
     }
 
+    public function showkerambabyidkelompok($kelompok_id)
+    {
+        $keramba = KerambaModel::where(compact('kelompok_id'))->firstOrFail();
+        if(is_null($keramba))
+        {
+            return response()->json("not found");
+        }
+        return new KerambaResources($keramba);
+    }
+    
+
     /**
      * Show the form for editing the specified resource.
      *

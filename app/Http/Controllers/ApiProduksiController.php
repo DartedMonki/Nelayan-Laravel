@@ -109,6 +109,16 @@ class ApiProduksiController extends Controller
         $pemindahan = PemindahanModel::findOrFail($id);
         return new PemindahanResources($pemindahan);
     }
+    public function showproduksibyidkelompok($id)
+    {
+        $produksi = Kelompok::where(compact('id'))->firstOrFail();
+        if(is_null($produksi))
+        {
+            return response()->json("not found");
+        }
+        return new ProduksiResources($produksi);
+    }
+
 
     /**
      * Show the form for editing the specified resource.

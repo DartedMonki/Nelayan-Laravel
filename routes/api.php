@@ -31,12 +31,14 @@ Route::delete('/apisensorsuhu/delete/{id}','ApiSensorSuhuController@destroy');
 
 Route::get('/apikeramba','ApiKerambaController@index');
 Route::get('/apikeramba/{id}','ApiKerambaController@show');
+Route::get('/apikerambaidkelompok/{kelompok_id}','ApiKerambaController@showkerambabyidkelompok');
 Route::post('/apikerambastore','ApiKerambaController@store');
 Route::put('/apikerambastore','ApiKerambaController@store');
 Route::delete('/apikerambadelete/{id}','ApiKerambaController@destroy');
 
 Route::get('/apiproduksi','ApiProduksiController@index');
 Route::get('/apiproduksi/{id}','ApiProduksiController@show');
+Route::get('/apiproduksiidkelompok/{id}','ApiProduksiController@showproduksibyidkelompok');
 Route::post('/apiproduksi/store','ApiProduksiController@store');
 Route::put('/apiproduksi/store','ApiProduksiController@store');
 Route::delete('/apiproduksi/delete/{id}','ApiProduksiController@destroy');
